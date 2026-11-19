@@ -1,0 +1,528 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="UTF-8">
+<title>Portofolio Seniman — Erika Richardo</title>
+<style>
+@page { size: 210mm 297mm; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { background-color: #ffffff; }
+@media (prefers-color-scheme: dark) {
+    html { background-color: #1f1f1f; }
+}
+body {
+    padding: 24px 0;
+    margin: 0 auto;
+    max-width: 1160px !important;
+    border: none !important;
+    background: transparent !important;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #1e293b;
+}
+.page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 12px auto;
+    padding: 18mm 18mm 12mm 18mm;
+    background-color: #faf9f6;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+@media screen and (max-width: 600px) {
+    body {
+        padding: 16px 0;
+    }
+    .page {
+        width: 100%;
+        margin: 0 auto 8px auto;
+        border: none;
+        padding: 12px 20px;
+    }
+}
+.page-content {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+}
+.page-content > * + * {
+    margin-top: 20px;
+}
+.page-content > :is(h1, h2, h3, h4) + * {
+    margin-top: 8px;
+}
+.page-footer {
+    flex-shrink: 0;
+    margin-top: auto;
+    padding-top: 4mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8.5pt;
+    color: #64748b;
+    border-top: 1px solid #cbd5e1;
+}
+@media print {
+    *, *::before, *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    body { padding: 0; background: none; }
+    .page {
+        margin: 0;
+        border: none;
+        break-after: page;
+        page-break-after: always;
+    }
+    .page:last-child { break-after: auto; page-break-after: auto; }
+}
+[contenteditable]:focus { outline: none; }
+
+/* Tipografi & Hirarki */
+.masthead {
+    border-bottom: 2px solid #9f2b2b;
+    padding-bottom: 14px;
+}
+.kicker {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9f2b2b;
+    margin: 0 0 6px 0;
+}
+h1 {
+    font-size: 22pt;
+    line-height: 1.15;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+}
+.subtitle {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #334155;
+    margin: 0;
+}
+h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13.5pt;
+    font-weight: 700;
+    color: #9f2b2b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+h3 {
+    font-size: 11.5pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 4px 0;
+}
+p {
+    font-size: 11pt;
+    line-height: 1.5;
+    margin: 0;
+    color: #1e293b;
+}
+ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 11pt;
+    line-height: 1.5;
+}
+li {
+    margin-bottom: 5px;
+}
+
+/* Tata Letak Foto & Figur */
+.portrait-figure {
+    float: right;
+    width: 58mm;
+    margin: 0 0 12px 16px;
+    border: 1px solid #cbd5e1;
+    padding: 5px;
+    background-color: #ffffff;
+}
+.portrait-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.portrait-figure figcaption {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: #475569;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.gallery-item {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 14px;
+    clear: both;
+}
+.gallery-item:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+.artwork-figure {
+    margin: 10px 0 0 0;
+    border: 1px solid #cbd5e1;
+    padding: 6px;
+    background-color: #ffffff;
+}
+.artwork-figure.portrait-work {
+    width: 68mm;
+}
+.artwork-figure.wide-work {
+    width: 100%;
+}
+.artwork-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.artwork-figure figcaption {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: #475569;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+.image-pair {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+.image-pair figure {
+    flex: 1;
+    margin: 0;
+    border: 1px solid #cbd5e1;
+    padding: 5px;
+    background-color: #ffffff;
+}
+.image-pair img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.image-pair figcaption {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: #475569;
+    margin-top: 5px;
+    line-height: 1.35;
+}
+
+.image-trio {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 12px;
+}
+.image-trio figure {
+    flex: 1;
+    margin: 0;
+    border: 1px solid #cbd5e1;
+    padding: 5px;
+    background-color: #ffffff;
+}
+.image-trio img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.image-trio figcaption {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: #475569;
+    margin-top: 5px;
+    line-height: 1.35;
+}
+
+/* Kutipan Artist Statement */
+.artist-statement {
+    border-left: 4px solid #9f2b2b;
+    background-color: #f3efe6;
+    padding: 12px 16px;
+    margin: 0;
+}
+.artist-statement p {
+    font-style: italic;
+    color: #1e293b;
+}
+.statement-note {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: #64748b;
+    margin-bottom: 6px;
+    font-style: normal !important;
+}
+
+/* Tabel Profil & Penghargaan */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+    line-height: 1.45;
+}
+thead th {
+    background-color: #9f2b2b;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid #9f2b2b;
+}
+tbody td {
+    padding: 7px 10px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    vertical-align: top;
+}
+tbody tr:nth-child(even) td {
+    background-color: #f8fafc;
+}
+.clear {
+    clear: both;
+}
+</style>
+<style data-bard-injected="true">
+@media screen {
+    html {
+        background-color: #ffffff;
+    }
+    body {
+        padding: 8px 0 24px 0;
+    }
+}
+@media screen and (prefers-color-scheme: dark) {
+    html {
+        background-color: #1f1f1f;
+    }
+}
+@media screen and (max-width: 600px) {
+    body {
+        padding: 4px 0 16px 0;
+        margin: 0 auto;
+    }
+}
+</style></head>
+<body>
+<div contenteditable="true">
+<section class="page">
+  <div class="page-content">
+    <header class="masthead">
+      <p class="kicker">Portofolio Seniman &amp; Kreator Konten Seni</p>
+      <h1>Erika Richardo</h1>
+      <p class="subtitle">Erika Richardo adalah seorang pelukis, kreator konten seni, dan pengusaha muda asal Indonesia. Ia dikenal karena kreativitasnya dalam melukis menggunakan berbagai media yang tidak biasa. Karya-karyanya tidak hanya dibuat di atas kanvas, tetapi juga pada mobil, kaca, pakaian, hingga media berukuran besar seperti pesawat dan kereta.</p>
+    </header>
+
+    <h2>1. Galeri Karya</h2>
+
+    <div class="gallery-item">
+      <h3>1. Lukisan Badan Pesawat Boeing 737-800NG</h3>
+      <p>Melukis badan pesawat Boeing 737-800NG dengan motif batik yang menggambarkan keberagaman 16 kelompok etnis Indonesia.</p>
+      <figure class="artwork-figure portrait-work">
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1lfl_BfBxCOYso1O8Yi-2jge1T2rb0kmXCFpGd2wJfZkcL_nKjBCiu90lDz6Ex3BMS2TgTCjSh5qIzE23578WNnqwcNVwoYwENPPhZ24PL1bqVaM4JCvk64dCfR4ORyz96YvG7PSox-AMHr8FJCc1HVcNYqpHeXQioMOZQYh-3eKTQCnQ" alt="Erika Richardo berdiri di depan lukisan badan pesawat Boeing 737-800NG bermotif batik dan figur etnis Indonesia">
+        <figcaption>Karya lukis pada badan pesawat Boeing 737-800NG dengan motif batik dan representasi keberagaman 16 kelompok etnis Indonesia.</figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery-item">
+      <h3>2. Lukisan Mobil</h3>
+      <p>Menghias mobil menggunakan lukisan bermotif budaya, salah satunya terinspirasi dari Barong Bali.</p>
+      <figure class="artwork-figure portrait-work">
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1kctz10yt968QXkkkdwdqAqP-EMBPxi_B66TuRItuKWmcBKKo5dddq_Zd8wUSbWAgg6OB9Rv68V7_Zt061Z8TCwpRJvO-UXhvAg6PkQT2iD2ABbK_3RXTvW6Na7XSlmDPxSMKTyYrpFil4o_jvaajHjkhMbHtZ9TAfN8O_aBGVP6hkHNw" alt="Erika Richardo melukis motif Barong Bali pada bodi mobil putih">
+        <figcaption>Proses melukis motif budaya yang terinspirasi dari Barong Bali secara langsung di atas permukaan bodi mobil.</figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery-item">
+      <h3>3. Lukisan Kereta</h3>
+      <p>Menggunakan badan kereta sebagai media lukis untuk menghasilkan karya seni yang menarik dan berbeda.</p>
+      <figure class="artwork-figure wide-work">
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1n318LbrnJ82SAaMiXyzRfneXsagmCwGEd4G96KY-DPdZ9rhhQGElcajrB9D3jLzgpMdcjLGan0aEo23kMKxH5N2CCA8B4Xqo32LEizDHfpEHTUphuHnA0R-zdOaIlSqiTTGyAUiPYGCM0TjjClWnLLyxWTBRaAqCyPn60DMk-MjFjXMQ" alt="Erika Richardo memegang kuas di depan gerbong kereta yang dilukis motif bunga dan tipografi">
+        <figcaption>Eksplorasi permukaan gerbong kereta api sebagai media lukis berskala besar.</figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery-item">
+      <h3>4. Lukisan di Kanvas</h3>
+      <p>Membuat karya lukis dengan berbagai objek, warna, dan kreativitas sebagai bentuk ekspresi seni.</p>
+      <figure class="artwork-figure wide-work">
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1kaP9JG9b3xPQj3MDSXbNCqSUNm_4Tg_fNe8r3NMyVFIO_X_nEL0Y-oLHNcD363ZWUdEbAjhA8Lmp6VnsijeSqlWjFTbFJu4kA9z6IixtQFvSUf37Ptz6tiPVDdpSRu02WQkEAmalIuqXwQrSZWDnXiWswu0x4Ml2IpVt_J-r6DU2Dm" alt="Erika Richardo berpose dikelilingi berbagai karya lukisan di atas kanvas">
+        <figcaption>Rangkaian karya lukis di atas kanvas dengan eksplorasi objek alam, figur, dan komposisi warna.</figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery-item">
+      <h3>5. Benda-Benda di Sekitar sebagai Media Kreativitas</h3>
+      <p>Memanfaatkan benda-benda di sekitar sebagai media untuk menuangkan kreativitas, termasuk kaca, jendela, pakaian, serta benda sehari-hari lainnya.</p>
+    </div>
+
+    <h2>2. Kategori / Medium</h2>
+    <p>Kategori seni Erika Richardo adalah seni rupa dua dimensi, khususnya seni lukis, dengan eksplorasi media yang beragam. Gaya berkaryanya menunjukkan kreativitas, eksplorasi, dan keberanian mencoba media baru.</p>
+    <ul>
+      <li>Kanvas.</li>
+      <li>Cat akrilik dan cat lukis.</li>
+      <li>Kaca dan jendela.</li>
+      <li>Mobil dan benda sehari-hari.</li>
+      <li>Permukaan badan pesawat dan kereta.</li>
+    </ul>
+
+    <h2>3. Cerita di Balik Karya</h2>
+    <p>Erika Richardo memiliki ketertarikan terhadap seni lukis sejak kecil. Ia terinspirasi oleh lingkungan keluarga yang dekat dengan kreativitas dan seni. Dalam perjalanan berkaryanya, Erika tidak hanya ingin melukis di atas kanvas, tetapi juga mencoba berbagai benda yang ada di sekitarnya.</p>
+    <p>Awalnya, ia membagikan proses melukis melalui media sosial. Kemudian, kreativitasnya semakin berkembang hingga mendapat kesempatan membuat karya pada mobil, pesawat, dan kereta api.</p>
+    <p>Salah satu hal yang menarik dari perjalanan Erika adalah keinginannya untuk menunjukkan bahwa seni tidak memiliki batasan media. Menurut pendekatan berkaryanya, benda-benda sederhana pun dapat menjadi tempat untuk menciptakan karya seni yang indah dan bermakna.</p>
+
+    <h2>4. Bio &amp; Pernyataan Artis (Artist Statement)</h2>
+    <div>
+      <figure class="portrait-figure">
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1lUSVidTzc5KMUEyW8bXzlnbFKiYd64QXcTW7PrGW8UBLMcySTtOUXAf7PWCiSdidIMbzHsWLpASHVUG8AjrOsiD1twFGI0QL-WAtzsTFvaWkI5nzL1y68o9r9_xKsYz_Rn6Z6IgwY5aeBEu2eO_U7i0ENcSBfUH17exoxTSL02BHxaug" alt="Potret Erika Richardo memegang palet dan kuas lukis">
+        <figcaption>Erika Richardo — Pelukis &amp; Kreator Konten Seni</figcaption>
+      </figure>
+      <h3>Biografi</h3>
+      <p>Erika Richardo merupakan pelukis dan kreator konten asal Indonesia. Ia merupakan lulusan Universitas Prasetiya Mulya dengan latar belakang pendidikan bisnis. Erika mulai dikenal masyarakat melalui konten melukis yang dibagikan di media sosial. Ia memiliki ciri khas dalam menciptakan karya seni menggunakan berbagai media yang tidak biasa.</p>
+      <div class="clear"></div>
+    </div>
+
+    <h3>Artist Statement (Pernyataan Seniman)</h3>
+    <blockquote class="artist-statement">
+      <p class="statement-note">Berikut contoh pernyataan artis yang dirangkum berdasarkan perjalanan dan gagasan seni Erika, bukan kutipan langsung darinya.</p>
+      <p>&#34;Seni merupakan bentuk kebebasan berekspresi yang dapat dituangkan melalui berbagai media. Saya percaya bahwa seni tidak harus selalu berada di atas kanvas, tetapi bisa hadir di berbagai benda dalam kehidupan sehari-hari. Melalui karya-karya saya, saya ingin mengajak masyarakat, khususnya generasi muda, untuk lebih mengenal, menghargai, dan mencintai seni serta berani mengembangkan kreativitas.&#34;</p>
+    </blockquote>
+
+    <h2>5. Profil, Penghargaan &amp; Kontak</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" style="width: 34%;">Kategori</th>
+          <th scope="col">Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Profesi</strong></td>
+          <td>Pelukis dan kreator konten</td>
+        </tr>
+        <tr>
+          <td><strong>Asal</strong></td>
+          <td>Indonesia</td>
+        </tr>
+        <tr>
+          <td><strong>Pendidikan</strong></td>
+          <td>Universitas Prasetiya Mulya</td>
+        </tr>
+        <tr>
+          <td><strong>Bidang</strong></td>
+          <td>Seni lukis dan konten digital</td>
+        </tr>
+        <tr>
+          <td><strong>Usaha</strong></td>
+          <td>By.Painters</td>
+        </tr>
+        <tr>
+          <td><strong>Organisasi Sosial</strong></td>
+          <td>Rumah Lukis Erika — Inisiatif sosial yang didirikannya untuk mengembangkan kreativitas dan membantu masyarakat.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <figure class="artwork-figure wide-work">
+      <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1kDc9App-UYdacHDyQv6e8lKmOt7kWX60wK7DZpYFFgoGnFBJZJrg96_i2y4WQOjqeewEBD7wzVcgvrGAsY2q4mZUR9yStdxlv391k_QMVgTaS9ljKwqD3BUskaXQZkdSuD3AI7z6z8O9_CPgJeeEfHZDr7-LN4MPWbBLhAkQuDiwwycg" alt="Erika Richardo di depan plakat peresmian sekolah dukungan Rumah Lukis Erika dan Happy Hearts Indonesia">
+      <figcaption>Kegiatan sosial Rumah Lukis Erika dalam mendukung pembangunan kembali sekolah dan pengembangan kreativitas masyarakat.</figcaption>
+    </figure>
+
+    <h3>Penghargaan</h3>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" style="width: 18%;">Tahun</th>
+          <th scope="col">Penghargaan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2021</td>
+          <td>Rising Star of The Year – TikTok Awards Indonesia 2021</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>Popular Creator of The Year – TikTok Awards Indonesia 2023</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Creator of The Year – TikTok Awards Indonesia 2024</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="image-trio">
+      <figure>
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1lPMsczNhZJPvQkuB0gJzVmFrICs6Bln0dh9cISy3qyVvg3RcTbW9rdR20EuzmNNGlGJlIWrDBdP5LuTGiMA-RAkI9OL2Y6d7hocrLrd0VAMoOxUyPA3m7pQ2l2TZsor6oMDjGUPgYnbiFcDGAjoyC9CDnelelJ0L5Q-wNuIEzcpqXM3w" alt="Erika Richardo menerima piala Rising Star of The Year TikTok Awards Indonesia 2021">
+        <figcaption>Rising Star of The Year – TikTok Awards Indonesia 2021.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1lrKf2y8DIq5gMkwtkd4eR0-FgaqklOh1Vb4KnDZwmtDVAewCykOBu7uKI8cQDSWNAELl2-UoNaCWc6doq4fGRKDCFizQQp9A4QsxCJFnQfl7rWV1_6ejjAj42VJfL06UmOahifK70zljOwhasMLzWDPgb6MUEvyqqu8pSTC03YzI9ovQ" alt="Erika Richardo menerima piala Popular Creator of The Year TikTok Awards Indonesia 2023">
+        <figcaption>Popular Creator of The Year – TikTok Awards Indonesia 2023.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://lh3.googleusercontent.com/gg-dl/AHiVA1ndCBu8fPTy4Pjty_6hknUXio7T6BIuMkonkAe7Y9qOVkPIpx7OCLoqxbuKiush8tEm6V5pr7pfeBi98iAll3TGhL-bH1HJRW0zN8QheChLCsT9sa78VfGM0w86ddNzTt9ADMGollWjHnMOV39FK5M9FQ-sYDK9d7WnCxAH8unQahRnUA" alt="Erika Richardo menerima piala Creator of The Year TikTok Awards Indonesia 2024">
+        <figcaption>Creator of The Year – TikTok Awards Indonesia 2024.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Kontak dan Media Sosial</h3>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" style="width: 34%;">Platform / Inisiatif</th>
+          <th scope="col">Informasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Instagram</strong></td>
+          <td>@erikarichardo</td>
+        </tr>
+        <tr>
+          <td><strong>TikTok</strong></td>
+          <td>@erikarichardo</td>
+        </tr>
+        <tr>
+          <td><strong>LinkedIn</strong></td>
+          <td>Profil Erika Richardo</td>
+        </tr>
+        <tr>
+          <td><strong>Rumah Lukis Erika</strong></td>
+          <td>Inisiatif sosial yang didirikannya untuk mengembangkan kreativitas dan membantu masyarakat.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="page-footer">
+    <span>Portofolio Seniman — Erika Richardo</span>
+    <span>Page 1 of 1</span>
+  </footer>
+</section>
+</div>
+
+<script data-bard-injected="true" data-bard-page-paginator="true">'use strict';(function(){function E(a){return a.classList&&a.classList.contains("page")&&!(a.parentElement&&a.parentElement.closest(".page"))}function u(){return Array.from(r.querySelectorAll(".page")).filter(E)}function v(a){return a.querySelector(":scope > .page-content")}function t(a){return a.scrollHeight-a.clientHeight<=1}function F(a){return a&&a.children.length&&a.clientHeight?(a.lastElementChild.getBoundingClientRect().bottom-a.getBoundingClientRect().top)/a.clientHeight:0}function Q(a,b){var c=
+[[1E3,"m"],[900,"cm"],[500,"d"],[400,"cd"],[100,"c"],[90,"xc"],[50,"l"],[40,"xl"],[10,"x"],[9,"ix"],[5,"v"],[4,"iv"],[1,"i"]],d="";for(let [e,f]of c)for(;a>=e;)d+=f,a-=e;return b?d.toUpperCase():d}function R(a){var b=[];a=[...a];var c=0,d=0,e=[];for(var f of a)e.push(d),d+=f.length;for(e.push(d);c<a.length;)if(f=x.get(a[c])){d=c;for(var g=0;d<a.length&&x.get(a[d])&&x.get(a[d]).nu===f.nu;)g=g*10+x.get(a[d]).v,d++;b.push({start:e[c],end:e[d],value:g,kind:"dec",nu:f.nu});c=d}else if(!/[ivxlcdm]/i.test(a[c])||
+c!==0&&/\p{L}/u.test(a[c-1]))c++;else{for(g=c;g<a.length&&/[ivxlcdm]/i.test(a[g]);)g++;let h=a.slice(c,g).join("");if((g===a.length||!/\p{L}/u.test(a[g]))&&S.test(h)&&h.length>0){f=b;d=f.push;c=e[c];var k=e[g];let m={i:1,v:5,x:10,l:50,c:100,d:500,m:1E3},l=0,n=h.toLowerCase();for(let q=0;q<n.length;q++){let p=m[n[q]];l+=p<(m[n[q+1]]||0)?-p:p}d.call(f,{start:c,end:k,value:l,kind:"roman",upper:h===h.toUpperCase()})}c=g}return b}function z(a){return a.querySelector(":scope > .page-footer, :scope > footer")}
+function G(a){a=r.createTreeWalker(a,NodeFilter.SHOW_TEXT);for(var b=[],c="",d;d=a.nextNode();){let e=d.nodeValue,f=0;for(let g of R(e))c+=e.slice(f,g.start)+"#",f=g.end,b.push(Object.assign(g,{node:d}));c+=e.slice(f)}return{toks:b,skeleton:c.replace(/\s+/g," ").trim()}}function A(a,b,c){return b==="right"?a.length-1-c:c}function H(a,b){if(!b||b.node!==a.node)return null;var c=a.node.nodeValue;return a.start<b.start?c.slice(a.end,b.start):c.slice(b.end,a.start)}function I(a){return a!==null&&a.length<=
+12&&!/[\u2014\u2013\u2022|]|page|p\u00e1g|seite|sec|pa
